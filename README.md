@@ -1,15 +1,7 @@
-# FabricAutoCrafter
-## A Fabric mod that adds a new Auto Crafter block
+# Lustrousness
+## All the content you could need... and of course the content you don't need
 
-This mod adds a new block, the Auto Crafter. It allows you to put items in the crafting table and get an output. Hoppers and droppers do interact with the table.
+Lustrousness is a fabric server side mod that adds tons of new content to the game and alters most of the vanilla game to make it more challenging.
 
-Some code belongs to Gnembon. We were going to fork it, but the changes in this mod required a complete restructure of the mod.
+It uses Polymer to achieve the server side quality, and uses resource packs to display custom textures.
 
-Features that differ from Gnembon's mod:
-- We don't overwrite the crafting table
-- Uses Polymer to add a new Crafting Table
-- Fixes a recipe book issue
-- Fixes item filters not working
-- Adds a recipe for the Auto Crafter
-- Fixes an out-of-bounds exception
-- Adds Server-Side Translations

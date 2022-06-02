@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.github.CrumCreators.lustrousness.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinSheepEntity",
+    "MixinEntityType"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -12,6 +12,7 @@ group = project.maven_group
 
 repositories {
     maven { url 'https://maven.nucleoid.xyz' }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -22,8 +23,9 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation include("eu.pb4:polymer:0.2.0-beta.37+1.18.2")
-    modImplementation include("fr.catcore:server-translations-api:1.4.10+1.18.2")
+    modImplementation include("eu.pb4:polymer:0.2.0-rc.2+1.18.2")
+    modImplementation include("fr.catcore:server-translations-api:1.4.12+1.18.2")
+    modImplementation 'com.github.astei:lazydfu:0.1.2'
 }
 
 processResources {
