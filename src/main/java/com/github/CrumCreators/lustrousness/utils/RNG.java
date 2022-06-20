@@ -4,7 +4,7 @@ public class RNG {
 
     static int min = 10;
     static int max = 50;
-    public static int rngout;
+    public static int rngout = (int)Math.floor(Math.random()*(max-min+1)+min);;
 
     public static void randomize() {
         rngout = (int)Math.floor(Math.random()*(max-min+1)+min);
