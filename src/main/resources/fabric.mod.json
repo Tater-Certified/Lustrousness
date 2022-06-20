@@ -12,7 +12,7 @@
     "Ampflower"
   ],
   "license": "GPL-3.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/lustrousness/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -25,7 +25,7 @@
   "depends": {
     "fabricloader": "*",
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": "1.19.x",
     "java": ">=17"
   }
 }

@@ -1,5 +1,6 @@
 package com.github.CrumCreators.lustrousness;
 
+import com.github.CrumCreators.lustrousness.item.Backpacks;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -10,13 +11,24 @@ import java.util.Properties;
 
 
 public class Main implements ModInitializer {
-    //Config Version
-    public static String cfgver;
+    //modid
+    public static String modid = "lustrousness";
 
-    public static Properties properties = new Properties();
+    //Config Version
+    public String cfgver;
+
+    public Properties properties = new Properties();
 
     @Override
     public void onInitialize() {
+        //create config
+        createCfg();
+        //register items
+        Backpacks.registerBackpacks();
+    }
+
+
+    public void createCfg() {
         var path = FabricLoader.getInstance().getConfigDir().resolve("lustrouness.properties");
 
         if (Files.notExists(path)) {
@@ -45,6 +57,8 @@ public class Main implements ModInitializer {
             }
         }
     }
+
+
     public void mkfile() throws IOException {
         OutputStream output = new FileOutputStream(String.valueOf(FabricLoader.getInstance().getConfigDir().resolve("lustrousness.properties")));
         if (!properties.contains("config-version")) {properties.setProperty("config-version", "1.0");}
