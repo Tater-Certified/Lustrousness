@@ -3,7 +3,7 @@
   "package": "com.github.CrumCreators.lustrousness.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinEntityType"
+    "MixinLivingEntity"
   ],
   "injectors": {
     "defaultRequire": 1
