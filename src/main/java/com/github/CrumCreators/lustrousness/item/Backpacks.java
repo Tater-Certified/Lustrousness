@@ -47,12 +47,13 @@ public class Backpacks extends SimplePolymerItem {
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        ItemStack stack = user.getStackInHand(hand);
         if(user instanceof ServerPlayerEntity serverPlayer) {
             SimpleGui backpackgui = new SimpleGui(ScreenHandlerType.GENERIC_9X1, serverPlayer, false);
             backpackgui.open();
             System.out.println("GUI OPEN");
-            return new TypedActionResult(SUCCESS, TINY_BACKPACK);
+            return new TypedActionResult<>(SUCCESS, stack);
         }
-        return new TypedActionResult(PASS, TINY_BACKPACK);
+        return new TypedActionResult<>(PASS, stack);
     }
 }
