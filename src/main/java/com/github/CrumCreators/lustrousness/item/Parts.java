@@ -57,12 +57,12 @@ public class Parts extends SimplePolymerItem {
         final Item SHOVEL_HEAD_STENCIL = stencil("shovel_head_stencil");
         final Item SHURIKEN_STENCIL = stencil("shuriken_stencil");
         final Item SPEAR_TIP_STENCIL = stencil("spear_tip_stencil");
-        final Item SPELL_BOOK = stencil("spell_book");
+        final Item SPELL_BOOK_STENCIL = stencil("spell_book_stencil");
         final Item STAFF_STENCIL = stencil("staff_stencil");
-        final Item STEEL_STENCIL = stencil("steel_stencil");
+        final Item STRIKER_STENCIL = stencil("striker_stencil");
         final Item STENCIL = stencil("stencil");
         final Item SUMMONER_STENCIL = stencil("summoner_stencil");
-        final Item TRIDENT_STENCIL = stencil("trident_stencil");
+        final Item TRIDENT_HEAD_STENCIL = stencil("trident_head_stencil");
         final Item WAND_STENCIL = stencil("wand_stencil");
     }
 }
