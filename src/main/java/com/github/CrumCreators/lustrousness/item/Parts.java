@@ -1,14 +1,9 @@
 package com.github.CrumCreators.lustrousness.item;
 
+import com.github.CrumCreators.lustrousness.util.PolyLustUtils;
 import eu.pb4.polymer.api.item.SimplePolymerItem;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-
-import static com.github.CrumCreators.lustrousness.Main.modid;
 
 public class Parts extends SimplePolymerItem {
 
@@ -17,9 +12,7 @@ public class Parts extends SimplePolymerItem {
     }
 
     public static Item stencil(String path) {
-        Item item = new SimplePolymerItem(new FabricItemSettings().group(ItemGroup.MISC), Items.PAPER);
-        Registry.register(Registry.ITEM, Identifier.of(modid, path), item);
-        return item;
+        return PolyLustUtils.ofModelled(path, Items.PAPER);
     }
     public static void registerStencils() {
         final Item AXE_HEAD_STENCIL = stencil("axe_head_stencil");
