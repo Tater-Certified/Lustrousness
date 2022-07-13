@@ -2,6 +2,7 @@ package com.github.CrumCreators.lustrousness;
 
 import com.github.CrumCreators.lustrousness.item.Backpacks;
 import com.github.CrumCreators.lustrousness.item.Parts;
+import eu.pb4.polymer.api.resourcepack.PolymerRPUtils;
 import net.fabricmc.api.ModInitializer;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class Main implements ModInitializer {
             throw new RuntimeException("Cannot load or create config", ioe);
         }
         //register items
+        PolymerRPUtils.addAssetSource(modid);
         Backpacks.registerBackpacks();
         Parts.registerStencils();
     }
