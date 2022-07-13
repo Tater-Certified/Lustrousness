@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "lustrousness:item/short_blade_stencil"
+  }
+}

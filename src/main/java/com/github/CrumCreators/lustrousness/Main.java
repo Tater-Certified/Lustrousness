@@ -1,6 +1,7 @@
 package com.github.CrumCreators.lustrousness;
 
 import com.github.CrumCreators.lustrousness.item.Backpacks;
+import com.github.CrumCreators.lustrousness.item.Parts;
 import net.fabricmc.api.ModInitializer;
 
 import java.io.IOException;
@@ -20,5 +21,6 @@ public class Main implements ModInitializer {
         }
         //register items
         Backpacks.registerBackpacks();
+        Parts.registerStencils();
     }
 }
