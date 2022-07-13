@@ -1,6 +1,7 @@
 package com.github.CrumCreators.lustrousness.mixin;// Created 2022-24-06T12:28:59
 
 import com.github.CrumCreators.lustrousness.Config;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -20,7 +21,12 @@ import static net.minecraft.entity.attribute.EntityAttributes.GENERIC_MAX_HEALTH
  * @since ${version}
  **/
 @Mixin(LivingEntity.class)
-public abstract class MixinLivingEntity {
+public abstract class MixinLivingEntity extends Entity {
+
+    public MixinLivingEntity(EntityType<?> type, World world) {
+        super(type, world);
+    }
+
     @Shadow
     @Nullable
     public abstract EntityAttributeInstance getAttributeInstance(EntityAttribute attribute);
@@ -35,7 +41,7 @@ public abstract class MixinLivingEntity {
     public void lustousness$setMaxHealth(EntityType<?> entityType, World world, CallbackInfo ci) {
         var range = Config.randomHealthRanges.get(entityType);
         if (range != null) {
-            int health = range.random(world.random);
+            int health = range.random(this.random);
             var maxHealthAttribute = getAttributeInstance(GENERIC_MAX_HEALTH);
             // This should never be null, but on the off chance it is, no crash.
             if (maxHealthAttribute != null) {
