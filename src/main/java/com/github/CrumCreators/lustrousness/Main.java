@@ -1,7 +1,9 @@
 package com.github.CrumCreators.lustrousness;
 
+import com.github.CrumCreators.lustrousness.item.Attributes;
 import com.github.CrumCreators.lustrousness.item.Backpacks;
 import com.github.CrumCreators.lustrousness.item.Parts;
+import com.github.CrumCreators.lustrousness.item.SlimeSling;
 import eu.pb4.polymer.api.resourcepack.PolymerRPUtils;
 import net.fabricmc.api.ModInitializer;
 
@@ -24,5 +26,7 @@ public class Main implements ModInitializer {
         PolymerRPUtils.addAssetSource(modid);
         Backpacks.registerBackpacks();
         Parts.registerStencils();
+        SlimeSling.registerSlimeSling();
+        Attributes.registerAttributes();
     }
 }

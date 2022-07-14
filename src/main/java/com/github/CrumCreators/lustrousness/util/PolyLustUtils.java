@@ -23,9 +23,9 @@ public class PolyLustUtils {
      * @param mask The vanilla item to act as the mask.
      * @return A registered Polymer item ready for use.
      */
-    public static Item ofModelled(String path, Item mask) {
+    public static Item ofModelled(String path, Item mask, ItemGroup group) {
         PolymerModelData modelData = PolymerRPUtils.requestModel(mask, new Identifier(modid, "item/" + path));
-        ModelledPolymerItem item = new ModelledPolymerItem(new FabricItemSettings().group(ItemGroup.MISC), modelData, mask);
+        ModelledPolymerItem item = new ModelledPolymerItem(new FabricItemSettings().group(group), modelData, mask);
         Registry.register(Registry.ITEM, new Identifier(modid, path), item);
         return item;
     }
