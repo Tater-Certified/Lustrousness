@@ -1,36 +1,62 @@
 package com.github.CrumCreators.lustrousness.item;
 
+import com.github.CrumCreators.lustrousness.util.ModelledPolymerItem;
 import com.github.CrumCreators.lustrousness.util.PolyLustUtils;
-import eu.pb4.polymer.api.item.SimplePolymerItem;
+import eu.pb4.polymer.api.resourcepack.PolymerModelData;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.*;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class SlimeSling extends SimplePolymerItem {
-    public SlimeSling(Settings settings, Item polymerItem) {
-        super(settings, polymerItem);
+public class SlimeSling extends ModelledPolymerItem {
+
+    public SlimeSling(Settings settings, PolymerModelData modelData) {
+        super(settings, modelData);
     }
 
     public static Item SLIME_SLING;
 
     public static void registerSlimeSling() {
-        SLIME_SLING = PolyLustUtils.ofModelled("slime_sling", Items.SLIME_BALL, ItemGroup.TOOLS);
+        SLIME_SLING = PolyLustUtils.ofModelled("slime_sling", Items.BOW, ItemGroup.TOOLS,
+                (settings, modelData) -> new SlimeSling(settings.maxCount(1), modelData));
     }
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        if (world.isClient) return;
 
-        user.teleport(10,10,10);
+        float base = BowItem.getPullProgress(getMaxUseTime(stack) - remainingUseTicks) * 1.45F;
 
-        super.onStoppedUsing(stack, world, user, remainingUseTicks);
+        float yaw = user.getHeadYaw() * MathHelper.RADIANS_PER_DEGREE;
+        float pitch = user.getPitch() * MathHelper.RADIANS_PER_DEGREE;
+        float mul = MathHelper.cos(pitch) * base;
+
+        // This goes backwards on purpose.
+        float x = MathHelper.sin(yaw) * mul;
+        float y = MathHelper.sin(pitch) * base;
+        float z = -MathHelper.cos(yaw) * mul;
+
+        user.setVelocity(user.getVelocity().add(x, y, z));
+        user.velocityModified = true;
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 72000;
     }
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return super.getUseAction(stack);
+        return UseAction.BOW;
+    }
+
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        user.setCurrentHand(hand);
+        return TypedActionResult.consume(user.getStackInHand(hand));
     }
 }
