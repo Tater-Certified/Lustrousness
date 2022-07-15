@@ -12,18 +12,16 @@ import org.jetbrains.annotations.Nullable;
  * @since ${version}
  **/
 public class ModelledPolymerItem extends Item implements PolymerItem {
-    private final Item mask;
     private final PolymerModelData customModelData;
 
-    public ModelledPolymerItem(Settings settings, PolymerModelData customModelData, Item mask) {
+    public ModelledPolymerItem(Settings settings, PolymerModelData customModelData) {
         super(settings);
         this.customModelData = customModelData;
-        this.mask = mask;
     }
 
     @Override
     public Item getPolymerItem(ItemStack itemStack, @Nullable ServerPlayerEntity player) {
-        return mask;
+        return customModelData.item();
     }
 
     @Override
