@@ -1,5 +1,6 @@
 package com.github.CrumCreators.lustrousness;
 
+import com.github.CrumCreators.lustrousness.armor.Armor;
 import com.github.CrumCreators.lustrousness.item.Attributes;
 import com.github.CrumCreators.lustrousness.item.Backpacks;
 import com.github.CrumCreators.lustrousness.item.Parts;
@@ -28,5 +29,6 @@ public class Main implements ModInitializer {
         Parts.registerStencils();
         SlimeSling.registerSlimeSling();
         Attributes.registerAttributes();
+        Armor.registerCrongness();
     }
 }

@@ -132,5 +132,4 @@ public class Attributes extends SimplePolymerItem {
         GODS_GIFT = attribute("gods_gift_attribute");
         SHOCKWAVE = attribute("shockwave_attribute");
     }
-
 }
