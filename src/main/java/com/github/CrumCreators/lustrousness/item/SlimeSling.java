@@ -22,7 +22,7 @@ public class SlimeSling extends ModelledPolymerItem {
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (world.isClient || !user.isOnGround()) return;
 
-        float force_multiplier = 0;
+        float force_multiplier;
         if (user.isSneaking()) {
             force_multiplier = 4.5F;
         } else {
