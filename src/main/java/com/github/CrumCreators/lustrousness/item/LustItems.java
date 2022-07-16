@@ -137,7 +137,7 @@ public final class LustItems {
 
     public static Item slimeSling(String path) {
         return PolyLustUtils.ofModelled(path, Items.BOW, ItemGroup.TOOLS,
-                (settings, modelData) -> new SlimeSling(settings.maxCount(1), modelData));
+                (settings, modelData) -> new SlimeSlingItem(settings.maxCount(1), modelData));
     }
 
     public static Item attribute(String path) {
