@@ -3,6 +3,7 @@ package com.github.CrumCreators.lustrousness.item;
 import com.github.CrumCreators.lustrousness.util.ModelledPolymerItem;
 import com.github.CrumCreators.lustrousness.util.PolyLustUtils;
 import eu.pb4.polymer.api.resourcepack.PolymerModelData;
+import net.minecraft.block.SlimeBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
@@ -27,9 +28,16 @@ public class SlimeSling extends ModelledPolymerItem {
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (world.isClient) return;
+        if (world.isClient || !user.isOnGround()) return;
 
-        float base = BowItem.getPullProgress(getMaxUseTime(stack) - remainingUseTicks) * 1.45F;
+        float force_multiplier = 0;
+        if (user.isSneaking()) {
+            force_multiplier = 4.5F;
+        } else {
+            force_multiplier = 2.5F;
+        }
+
+        float base = BowItem.getPullProgress(getMaxUseTime(stack) - remainingUseTicks) * force_multiplier;
 
         float yaw = user.getHeadYaw() * MathHelper.RADIANS_PER_DEGREE;
         float pitch = user.getPitch() * MathHelper.RADIANS_PER_DEGREE;
