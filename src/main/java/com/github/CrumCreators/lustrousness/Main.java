@@ -26,11 +26,12 @@ public class Main implements ModInitializer {
         LustItems.init();
     }
 
-    public void bounce(LivingEntity entity) {
+    public static void bounce(LivingEntity entity) {
         Vec3d vec3d = entity.getVelocity();
-        if (vec3d.y < 0.0) {
-            double d = 1.0;
-            entity.setVelocity(vec3d.x, -vec3d.y * d, vec3d.z);
+        if (entity.fallDistance > 0 && vec3d.y < 0) {
+            double d = 1.0, e = 0.4;
+            entity.setVelocity(vec3d.x * e, -vec3d.y * d, vec3d.z * e);
+            entity.velocityModified = true;
         }
     }
 }
