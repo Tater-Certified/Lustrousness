@@ -127,6 +127,9 @@ public final class LustItems {
     //Hammer
     public static final Item SHOCKWAVE = attribute("shockwave_attribute");
 
+    public static final Item SLIME_BOOTS = PolyLustUtils.ofModelled("slime_boots", Items.LEATHER_BOOTS,
+            LustItemGroups.WARMOR_GROUP, LustArmorMaterials.SLIME);
+
     private static Item backpack(String path, int rows) {
         return PolyLustUtils.ofModelled(path, Items.LEATHER, ItemGroup.MISC, BackpackItem::new);
     }
