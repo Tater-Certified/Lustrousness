@@ -12,9 +12,9 @@ import net.minecraft.util.UseAction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class SlimeSling extends ModelledPolymerItem {
+public class SlimeSlingItem extends ModelledPolymerItem {
 
-    public SlimeSling(Settings settings, PolymerModelData modelData) {
+    public SlimeSlingItem(Settings settings, PolymerModelData modelData) {
         super(settings, modelData);
     }
 
@@ -22,11 +22,9 @@ public class SlimeSling extends ModelledPolymerItem {
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (world.isClient || !user.isOnGround()) return;
 
-        float force_multiplier = 0;
+        float force_multiplier = 2.5F;
         if (user.isSneaking()) {
             force_multiplier = 4.5F;
-        } else {
-            force_multiplier = 2.5F;
         }
 
         float base = BowItem.getPullProgress(getMaxUseTime(stack) - remainingUseTicks) * force_multiplier;
