@@ -1,6 +1,5 @@
 package com.github.CrumCreators.lustrousness.armor;
 
-import com.github.CrumCreators.lustrousness.groups.Groups;
 import eu.pb4.polymer.api.item.PolymerItem;
 import eu.pb4.polymer.api.item.SimplePolymerItem;
 import eu.pb4.polymer.api.resourcepack.PolymerModelData;
