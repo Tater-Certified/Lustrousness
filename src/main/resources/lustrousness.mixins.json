@@ -3,9 +3,10 @@
   "package": "com.github.CrumCreators.lustrousness.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinEndermanEntity",
-    "MixinLivingEntity",
     "EntityTypeMixin",
+    "MixinEndermanEntity",
+    "MixinEntity",
+    "MixinLivingEntity",
     "WitherSkeletonEntityMixin"
   ],
   "injectors": {
