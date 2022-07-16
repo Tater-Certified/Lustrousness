@@ -1,12 +1,11 @@
 package com.github.CrumCreators.lustrousness.item;
 
 import com.github.CrumCreators.lustrousness.util.ModelledPolymerItem;
-import com.github.CrumCreators.lustrousness.util.PolyLustUtils;
 import eu.pb4.polymer.api.resourcepack.PolymerModelData;
-import net.minecraft.block.SlimeBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.BowItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -17,13 +16,6 @@ public class SlimeSling extends ModelledPolymerItem {
 
     public SlimeSling(Settings settings, PolymerModelData modelData) {
         super(settings, modelData);
-    }
-
-    public static Item SLIME_SLING;
-
-    public static void registerSlimeSling() {
-        SLIME_SLING = PolyLustUtils.ofModelled("slime_sling", Items.BOW, ItemGroup.TOOLS,
-                (settings, modelData) -> new SlimeSling(settings.maxCount(1), modelData));
     }
 
     @Override
