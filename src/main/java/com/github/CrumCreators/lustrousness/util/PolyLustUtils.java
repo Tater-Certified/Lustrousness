@@ -3,6 +3,9 @@ package com.github.CrumCreators.lustrousness.util;// Created 2022-13-07T01:12:20
 import eu.pb4.polymer.api.resourcepack.PolymerModelData;
 import eu.pb4.polymer.api.resourcepack.PolymerRPUtils;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -55,6 +58,49 @@ public class PolyLustUtils {
     }
 
     /**
+     * Creates &amp; registers a Polymer armor item with a model bound for the given masking item.
+     *
+     * @param path     The path of the item in the registry.
+     * @param mask     The vanilla armor to act as the mask.
+     * @param group    The item group to put the item in.
+     * @param material The material for the armor.
+     * @return A registered Polymer armor item ready for use.
+     */
+    public static ArmorItem ofModelled(@NotNull String path, @NotNull Item mask, ItemGroup group,
+                                       @NotNull ArmorMaterial material) {
+        Objects.requireNonNull(path, "Invalid registry path.");
+        Objects.requireNonNull(material, "Invalid armor material.");
+        ArmorItem maskArmor = checkArmor(mask);
+        var item = new ModelledPolymerArmorItem(material, maskArmor.getSlotType(),
+                new FabricItemSettings().group(group).maxCount(1), getModelData(path, mask));
+        registerItem(path, item);
+        return item;
+    }
+
+    /**
+     * Creates &amp; registers a customised Polymer armor item with a model bound for the given masking item.
+     *
+     * @param path        The path of the item in the registry.
+     * @param mask        The vanilla armor to act as the mask.
+     * @param group       The item group to put the item in.
+     * @param material    The material for the armor.
+     * @param constructor The constructor reference or lambda for a custom ArmorItem instance.
+     * @return A registered custom Polymer armor item ready for use.
+     */
+    public static <T extends ArmorItem> T ofModelled(@NotNull String path, @NotNull Item mask, ItemGroup group,
+                                                     @NotNull ArmorMaterial material,
+                                                     QuadFunction<ArmorMaterial, EquipmentSlot, Item.Settings,
+                                                             PolymerModelData, T> constructor) {
+        Objects.requireNonNull(path, "Invalid registry path.");
+        Objects.requireNonNull(material, "Invalid armor material.");
+        ArmorItem maskArmor = checkArmor(mask);
+        var item = constructor.invoke(material, maskArmor.getSlotType(),
+                new FabricItemSettings().group(group).maxCount(1), getModelData(path, mask));
+        registerItem(path, item);
+        return item;
+    }
+
+    /**
      * Helper method to get custom model data for the item.
      *
      * @param path The path of the item's model.
@@ -76,6 +122,15 @@ public class PolyLustUtils {
     }
 
     /**
+     * Checks item to ensure not-null, vanilla and is {@link ArmorItem}.
+     */
+    private static ArmorItem checkArmor(Item item) {
+        check(item);
+        if (!(item instanceof ArmorItem armorItem)) throw new IllegalArgumentException("Invalid item for armour.");
+        return armorItem;
+    }
+
+    /**
      * Checks item to ensure not-null & vanilla.
      */
     private static void check(Item item) {
@@ -84,5 +139,10 @@ public class PolyLustUtils {
         if (!"minecraft".equals(identifier.getNamespace())) {
             throw new IllegalArgumentException("Non-vanilla item " + item + " (" + identifier + ")");
         }
+    }
+
+    @FunctionalInterface
+    public interface QuadFunction<I1, I2, I3, I4, O> {
+        O invoke(I1 i1, I2 i2, I3 i3, I4 i4);
     }
 }
