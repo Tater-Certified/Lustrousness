@@ -22,7 +22,7 @@ public class MixinEntity {
                     target = "Lnet/minecraft/block/Block;onEntityLand(Lnet/minecraft/world/BlockView;Lnet/minecraft/entity/Entity;)V"))
     private void lustrousness$onEntityLand$slimeBoots(Block instance, BlockView world, Entity entity) {
         if (entity instanceof LivingEntity livingEntity && livingEntity.getEquippedStack(EquipmentSlot.FEET).isOf(LustItems.SLIME_BOOTS)) {
-            Main.bounce(livingEntity);
+            if (!entity.isSneaking()) Main.bounce(livingEntity);
         } else {
             instance.onEntityLand(world, entity);
         }
