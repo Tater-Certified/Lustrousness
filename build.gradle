@@ -13,6 +13,7 @@ group = project.maven_group
 repositories {
     maven { url 'https://maven.nucleoid.xyz' }
     maven { url 'https://api.modrinth.com/maven' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     mavenCentral()
 }
 
@@ -29,6 +30,11 @@ dependencies {
     modImplementation include("eu.pb4:sgui:1.1.1+1.19")
     modImplementation include("fr.catcore:server-translations-api:1.4.14+1.19-rc2")
     modImplementation("maven.modrinth:lazydfu:0.1.3")
+    modImplementation("maven.modrinth:polydex:0.1.8+1.19")
+    modImplementation("xyz.nucleoid:more-codecs:0.2.2+1.18")
+    modImplementation("eu.pb4:sidebar-api:0.1.1+1.19")
+    modImplementation("eu.pb4:player-data-api:0.2.1+1.19")
+    modImplementation("me.lucko:fabric-permissions-api:0.1-SNAPSHOT")
 }
 
 processResources {

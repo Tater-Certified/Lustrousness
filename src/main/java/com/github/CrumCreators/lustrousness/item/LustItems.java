@@ -17,6 +17,8 @@ public final class LustItems {
     public static final Item LARGE_BACKPACK = backpack("large_backpack", 4);
     public static final Item ADVENTURE_BACKPACK = backpack("adventure_backpack", 5);
 
+    public static final Item THUNDER_STAFF = staff("thunder_staff");
+
     public static final Item AXE_HEAD_STENCIL = stencil("axe_head_stencil");
     public static final Item BATTLE_AXE_HEAD_STENCIL = stencil("battle_axe_head_stencil");
     public static final Item BINDING_STENCIL = stencil("binding_stencil");
@@ -145,6 +147,11 @@ public final class LustItems {
 
     public static Item attribute(String path) {
         return PolyLustUtils.ofModelled(path, Items.ENCHANTED_BOOK, LustItemGroups.WATTRIBUTES_GROUP);
+    }
+
+    public static Item staff(String path) {
+        return PolyLustUtils.ofModelled(path, Items.FISHING_ROD, LustItemGroups.WMAGIC_GROUP,
+                (settings, modelData) -> new StaffItem(settings.maxCount(1), modelData));
     }
 
     public static void init() {
