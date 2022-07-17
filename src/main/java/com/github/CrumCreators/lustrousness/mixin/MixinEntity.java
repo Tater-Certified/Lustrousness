@@ -21,8 +21,8 @@ public class MixinEntity {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/block/Block;onEntityLand(Lnet/minecraft/world/BlockView;Lnet/minecraft/entity/Entity;)V"))
     private void lustrousness$onEntityLand$slimeBoots(Block instance, BlockView world, Entity entity) {
-        if (entity instanceof LivingEntity livingEntity && livingEntity.getEquippedStack(EquipmentSlot.FEET).isOf(LustItems.SLIME_BOOTS)) {
-            if (!entity.isSneaking()) Main.bounce(livingEntity);
+        if (entity instanceof LivingEntity livingEntity && livingEntity.getEquippedStack(EquipmentSlot.FEET).isOf(LustItems.SLIME_BOOTS) && entity.isSneaking()) {
+            Main.bounce(livingEntity);
         } else {
             instance.onEntityLand(world, entity);
         }
