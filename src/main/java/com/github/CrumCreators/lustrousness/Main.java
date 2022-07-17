@@ -28,7 +28,7 @@ public class Main implements ModInitializer {
 
     public static void bounce(LivingEntity entity) {
         Vec3d vec3d = entity.getVelocity();
-        if (entity.fallDistance > 0 && vec3d.y < 0) {
+        if (entity.fallDistance > 1.5 && vec3d.y < 0) {
             double d = 1.0, e = 0.4;
             entity.setVelocity(vec3d.x * e, -vec3d.y * d, vec3d.z * e);
             entity.velocityModified = true;
