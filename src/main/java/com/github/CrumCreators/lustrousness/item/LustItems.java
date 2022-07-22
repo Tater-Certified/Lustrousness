@@ -151,7 +151,7 @@ public final class LustItems {
 
     public static Item staff(String path) {
         return PolyLustUtils.ofModelled(path, Items.FISHING_ROD, LustItemGroups.WMAGIC_GROUP,
-                (settings, modelData) -> new StaffItem(settings.maxCount(1), modelData));
+                (settings, modelData) -> new ThunderStaffItem(settings.maxCount(1), modelData));
     }
 
     public static void init() {

@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,6 +26,7 @@ public class MixinEntity {
             Main.bounce(livingEntity);
         } else {
             instance.onEntityLand(world, entity);
+            if (entity.fallDistance > 3) entity.damage(DamageSource.FALL, (entity.fallDistance-6)/2);
         }
     }
 }
