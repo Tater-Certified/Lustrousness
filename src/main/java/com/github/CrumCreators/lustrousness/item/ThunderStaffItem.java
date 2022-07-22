@@ -15,8 +15,8 @@ import net.minecraft.util.UseAction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class StaffItem extends ModelledPolymerItem {
-    public StaffItem(Settings settings, PolymerModelData customModelData) {
+public class ThunderStaffItem extends ModelledPolymerItem {
+    public ThunderStaffItem(Settings settings, PolymerModelData customModelData) {
         super(settings, customModelData);
     }
 
