@@ -7,6 +7,7 @@
     "MixinEndermanEntity",
     "MixinEntity",
     "MixinLivingEntity",
+    "WitherMixin",
     "WitherSkeletonEntityMixin"
   ],
   "injectors": {
