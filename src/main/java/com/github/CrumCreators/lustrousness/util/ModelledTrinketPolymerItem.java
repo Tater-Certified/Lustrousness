@@ -1,5 +1,6 @@
-package com.github.CrumCreators.lustrousness.util;// Created 2022-13-07T01:13:53
+package com.github.CrumCreators.lustrousness.util;
 
+import dev.emi.trinkets.api.TrinketItem;
 import eu.pb4.polymer.core.api.item.PolymerItem;
 import eu.pb4.polymer.resourcepack.api.PolymerModelData;
 import net.minecraft.item.Item;
@@ -7,14 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * @author Ampflower
- * @since ${version}
- **/
-public class ModelledPolymerItem extends Item implements PolymerItem {
+public class ModelledTrinketPolymerItem extends TrinketItem implements PolymerItem {
+
     private final PolymerModelData customModelData;
 
-    public ModelledPolymerItem(Settings settings, PolymerModelData customModelData) {
+    public ModelledTrinketPolymerItem(Settings settings, PolymerModelData customModelData) {
         super(settings);
         this.customModelData = customModelData;
     }

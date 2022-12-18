@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.12-SNAPSHOT'
+    id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -14,6 +14,8 @@ repositories {
     maven { url 'https://maven.nucleoid.xyz' }
     maven { url 'https://api.modrinth.com/maven' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = "https://maven.terraformersmc.com/" }
+    maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
     mavenCentral()
 }
 
@@ -25,15 +27,16 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation include("eu.pb4:polymer:0.2.6+1.19")
-    modImplementation include("eu.pb4:polymer-autohost:0.1.1+1.19")
-    modImplementation include("eu.pb4:sgui:1.1.1+1.19")
-    modImplementation include("fr.catcore:server-translations-api:1.4.14+1.19-rc2")
+    modImplementation include("eu.pb4:polymer-core:0.3.1+1.19.3")
+    modImplementation include("eu.pb4:polymer-autohost:0.3.1+1.19.3")
+    modImplementation include("eu.pb4:sgui:1.2.0+1.19.3")
+    modImplementation include("fr.catcore:server-translations-api:1.4.19+1.19.3")
+    modImplementation include("eu.pb4.polyport:trinkets:3.5.0+polymerport.1")
     modImplementation("maven.modrinth:lazydfu:0.1.3")
-    modImplementation("maven.modrinth:polydex:0.1.8+1.19")
-    modImplementation("xyz.nucleoid:more-codecs:0.2.2+1.18")
+    modImplementation("maven.modrinth:polydex:0.2.0+1.19.3")
+    modImplementation("xyz.nucleoid:more-codecs:0.3.0+1.19.3")
     modImplementation("eu.pb4:sidebar-api:0.1.1+1.19")
-    modImplementation("eu.pb4:player-data-api:0.2.1+1.19")
+    modImplementation("eu.pb4:player-data-api:0.2.2+1.19.3")
     modImplementation("me.lucko:fabric-permissions-api:0.1-SNAPSHOT")
 }
 

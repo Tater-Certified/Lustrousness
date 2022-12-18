@@ -1,8 +1,12 @@
 package com.github.CrumCreators.lustrousness.item;// Created 2022-15-07T20:07:09
 
+import com.github.CrumCreators.lustrousness.magic.staff.ThunderStaffItem;
+import com.github.CrumCreators.lustrousness.magic.trinket.LavaMedallion;
+import com.github.CrumCreators.lustrousness.magic.trinket.MLGShoes;
 import com.github.CrumCreators.lustrousness.util.PolyLustUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 
 /**
@@ -18,6 +22,7 @@ public final class LustItems {
     public static final Item ADVENTURE_BACKPACK = backpack("adventure_backpack", 5);
 
     public static final Item THUNDER_STAFF = staff("thunder_staff");
+    public static final Item LIFT_STAFF = staff("lift_staff");
 
     public static final Item AXE_HEAD_STENCIL = stencil("axe_head_stencil");
     public static final Item BATTLE_AXE_HEAD_STENCIL = stencil("battle_axe_head_stencil");
@@ -66,6 +71,8 @@ public final class LustItems {
     public static final Item WAND_STENCIL = stencil("wand_stencil");
 
     public static final Item SLIME_SLING = slimeSling("slime_sling");
+    public static final Item LAVA_MEDALLION = lava_medallion("lava_medallion");
+    public static final Item MLG_SHOES = mlg_shoes("mlg_shoes");
 
     //Universal
     public static final Item MENDING = attribute("mending_attribute");
@@ -129,29 +136,38 @@ public final class LustItems {
     //Hammer
     public static final Item SHOCKWAVE = attribute("shockwave_attribute");
 
-    public static final Item SLIME_BOOTS = PolyLustUtils.ofModelled("slime_boots", Items.LEATHER_BOOTS,
-            LustItemGroups.WARMOR_GROUP, LustArmorMaterials.SLIME);
+    public static final Item SLIME_BOOTS = PolyLustUtils.ofModelled("slime_boots", Items.LEATHER_BOOTS, LustArmorMaterials.SLIME);
 
     private static Item backpack(String path, int rows) {
-        return PolyLustUtils.ofModelled(path, Items.LEATHER, ItemGroup.MISC, BackpackItem::new);
+        return PolyLustUtils.ofModelled(path, Items.LEATHER, BackpackItem::new);
     }
 
     public static Item stencil(String path) {
-        return PolyLustUtils.ofModelled(path, Items.PAPER, LustItemGroups.WTOOLS_GROUP);
+        return PolyLustUtils.ofModelled(path, Items.PAPER);
     }
 
     public static Item slimeSling(String path) {
-        return PolyLustUtils.ofModelled(path, Items.BOW, ItemGroup.TOOLS,
+        return PolyLustUtils.ofModelled(path, Items.BOW,
                 (settings, modelData) -> new SlimeSlingItem(settings.maxCount(1), modelData));
     }
 
     public static Item attribute(String path) {
-        return PolyLustUtils.ofModelled(path, Items.ENCHANTED_BOOK, LustItemGroups.WATTRIBUTES_GROUP);
+        return PolyLustUtils.ofModelled(path, Items.ENCHANTED_BOOK);
     }
 
     public static Item staff(String path) {
-        return PolyLustUtils.ofModelled(path, Items.FISHING_ROD, LustItemGroups.WMAGIC_GROUP,
+        return PolyLustUtils.ofModelled(path, Items.FISHING_ROD,
                 (settings, modelData) -> new ThunderStaffItem(settings.maxCount(1), modelData));
+    }
+
+    public static Item lava_medallion(String path) {
+        return PolyLustUtils.ofModelled(path, Items.LAVA_BUCKET,
+                (settings, modelData) -> new LavaMedallion(settings.maxCount(1), modelData));
+    }
+
+    public static Item mlg_shoes(String path) {
+        return PolyLustUtils.ofModelled(path, Items.WATER_BUCKET,
+                (settings, modelData) -> new MLGShoes(settings.maxCount(1), modelData));
     }
 
     public static void init() {

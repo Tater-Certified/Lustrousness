@@ -43,18 +43,21 @@ public abstract class MixinLivingEntity extends Entity {
     @Shadow
     public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
+    @Shadow public abstract void kill();
+
     /**
      * Sets the max health of the entity for the first time at initialisation.
      * <p>
      * This will take effect in all ways of spawning, including spawn eggs,
      * summon and world spawning.
      */
+
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getMaxHealth()F", ordinal = 0))
     public void lustousness$setMaxHealth(EntityType<?> entityType, World world, CallbackInfo ci) {
         var range = Config.randomHealthRanges.get(entityType);
         if (range != null) {
-            int health = range.random(this.random);
             var maxHealthAttribute = getAttributeInstance(GENERIC_MAX_HEALTH);
+            int health = range.random(this.random);
             // This should never be null, but on the off chance it is, no crash.
             if (maxHealthAttribute != null) {
                 maxHealthAttribute.setBaseValue(health);

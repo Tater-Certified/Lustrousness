@@ -4,22 +4,21 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
-import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.util.TypeFilter;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(EntityType.class)
-public abstract class EntityTypeMixin {
+public abstract class EntityTypeMixin<T extends Entity> implements TypeFilter<Entity, T> {
 
     @Shadow @Final private ImmutableSet<Block> canSpawnInside;
 
     @Shadow @Final private boolean fireImmune;
-
-    @Shadow @Final private RegistryEntry.Reference<EntityType<?>> registryEntry;
 
     /**
      * @author QPCrummer

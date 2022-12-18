@@ -1,8 +1,8 @@
-package com.github.CrumCreators.lustrousness.item;
+package com.github.CrumCreators.lustrousness.magic.staff;
 
 import com.github.CrumCreators.lustrousness.util.ModelledPolymerItem;
 import eu.pb4.polydex.api.PolydexTarget;
-import eu.pb4.polymer.api.resourcepack.PolymerModelData;
+import eu.pb4.polymer.resourcepack.api.PolymerModelData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;

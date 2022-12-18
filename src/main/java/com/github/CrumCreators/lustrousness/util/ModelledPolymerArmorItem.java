@@ -1,7 +1,7 @@
 package com.github.CrumCreators.lustrousness.util;// Created 2022-15-07T19:26:26
 
-import eu.pb4.polymer.api.item.PolymerItem;
-import eu.pb4.polymer.api.resourcepack.PolymerModelData;
+import eu.pb4.polymer.core.api.item.PolymerItem;
+import eu.pb4.polymer.resourcepack.api.PolymerModelData;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;

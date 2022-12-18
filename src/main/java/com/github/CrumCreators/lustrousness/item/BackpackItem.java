@@ -1,7 +1,7 @@
 package com.github.CrumCreators.lustrousness.item;
 
 import com.github.CrumCreators.lustrousness.util.ModelledPolymerItem;
-import eu.pb4.polymer.api.resourcepack.PolymerModelData;
+import eu.pb4.polymer.resourcepack.api.PolymerModelData;
 import eu.pb4.sgui.api.gui.SimpleGui;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

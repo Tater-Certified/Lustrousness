@@ -1,7 +1,7 @@
 package com.github.CrumCreators.lustrousness;
 
 import com.github.CrumCreators.lustrousness.item.LustItems;
-import eu.pb4.polymer.api.resourcepack.PolymerRPUtils;
+import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.Vec3d;
@@ -22,7 +22,7 @@ public class Main implements ModInitializer {
             throw new RuntimeException("Cannot load or create config", ioe);
         }
         //register items
-        PolymerRPUtils.addAssetSource(modid);
+        PolymerResourcePackUtils.addModAssets(modid);
         LustItems.init();
     }
 

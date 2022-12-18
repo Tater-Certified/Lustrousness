@@ -3,9 +3,9 @@ package com.github.CrumCreators.lustrousness;// Created 2022-22-06T20:08:33
 import com.mojang.logging.LogUtils;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.EntityType;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -81,7 +81,7 @@ public abstract class Config {
         randomHealthRanges.clear();
 
         for (var rangeEntry : randomHealthProperties.entrySet()) {
-            var entityType = Registry.ENTITY_TYPE.getOrEmpty(Identifier.tryParse((String) rangeEntry.getKey()));
+            var entityType = Registries.ENTITY_TYPE.getOrEmpty(Identifier.tryParse((String) rangeEntry.getKey()));
             var valuesRaw = rangeEntry.getValue();
 
             // Check to make sure the entry's valid.
@@ -143,6 +143,7 @@ public abstract class Config {
     private static void createMainConfig(Properties properties) throws IOException {
         properties.setProperty(ConfigConstants.CONFIG_VERSION, CURRENT_CONFIG_VERSION);
         properties.setProperty(ConfigConstants.RANDOM_HEALTH, "true");
+        properties.setProperty("distance-health-modifier", "0.001");
 
         try (var configStream = Files.newOutputStream(mainConfig, StandardOpenOption.CREATE)) {
             // TODO: Link to config documentation.
